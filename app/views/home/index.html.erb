@@ -1,0 +1,46 @@
+<h1>Friends</h1>
+<ul>
+    <% @friendships.each do |friendship| %>
+        <li><%= link_to friendship.friend.email, user_path(friendship.friend) %></li>
+    <% end %>
+</ul>
+
+<h1>Pending Friends</h1>
+<ul>
+    <% @pending_friendships.each do |friendship| %>
+        <li><%= link_to friendship.friend.email, user_path(friendship.friend) %></li>
+    <% end %>
+</ul>
+
+<h1>Ratings</h1>
+<ul>
+    <% @ratings.each do |rating| %>
+        <li>
+            <p class="rottentomatoes"><%= rating.movie.title %></p>
+            <p class="rating"><%= rating.rating %></p>
+        </li>
+
+    <% end %>
+</ul>
+
+<h1>Recommended For You</h1>
+<ul>
+    <% @recommendations.each do |recommendation| %>
+        <li>
+            <p class="rottentomatoes"><%= recommendation.movie.title %></p>
+            <p class="recommender"><%= recommendation.recommender.email %></p>
+            <p class="delete"><%= link_to 'Delete', recommendation, method: :delete %></p>
+        </li>
+    <% end %>
+</ul>
+
+<h1>Your Recommendations</h1>
+<ul>
+    <% @recommended.each do |recommendation| %>
+        <li>
+            <p class="rottentomatoes"><%= recommendation.movie.title %></p>
+            <p class="recommendee"><%= recommendation.recommendee.email %></p>
+            <p class="delete"><%= link_to 'Delete', recommendation, method: :delete %></p>
+        </li>
+    <% end %>
+</ul>

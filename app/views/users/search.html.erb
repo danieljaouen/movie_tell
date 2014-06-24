@@ -1,0 +1,12 @@
+<h1>Search</h1>
+<%= form_tag users_search_path, method: :get do %>
+    <%= text_field_tag 'email' %>
+    <%= submit_tag 'Submit' %>
+<% end %>
+
+<h1>Users</h1>
+<ul>
+    <% if @user %>
+        <li><%= link_to @user.email, user_path(@user) %></li>
+    <% end %>
+</ul>

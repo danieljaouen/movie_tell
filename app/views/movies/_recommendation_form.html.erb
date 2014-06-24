@@ -1,0 +1,14 @@
+<h1>Recommend to:</h1>
+
+<%= form_tag recommendations_path do %>
+    <ul>
+        <% @friends.each do |friend| %>
+            <li>
+                <%= check_box_tag "friend-#{friend.id}", friend.id %>
+                <%= label_tag "friend-#{friend.id}", friend.email %>
+            </li>
+        <% end %>
+    </ul>
+    <%= hidden_field_tag 'rottentomatoes_id', params[:id] %>
+    <%= submit_tag 'Submit' %>
+<% end %>

@@ -1,0 +1,6 @@
+<h1><%= @user.email %></h1>
+<% if @currently_friends && !@pending %>
+    <%= link_to 'Unfriend', unfriend_path(@user), method: :delete %>
+<% else %>
+    <%= link_to 'Friend', friend_path(@user), method: :post %>
+<% end %>

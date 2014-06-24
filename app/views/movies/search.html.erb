@@ -1,0 +1,12 @@
+<h1>Search</h1>
+<%= form_tag movies_search_path, method: :get do %>
+    <%= text_field_tag 'title' %>
+    <%= submit_tag 'Submit' %>
+<% end %>
+
+<h1>Movies</h1>
+<ul>
+    <% @movies.each do |movie| %>
+        <li><%= link_to movie[:title], movie_path(movie[:id]) %></li>
+    <% end %>
+</ul>

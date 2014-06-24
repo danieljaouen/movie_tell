@@ -6,7 +6,7 @@
 
 <h1>Movies</h1>
 <ul>
-    <% @movies.each do |movie| %>
-        <li><%= link_to movie[:title], movie_path(movie[:id]) %></li>
+    <% @movie_dicts.each do |movie_dict| %>
+        <li><%= link_to movie_dict[:title], movie_path(movie_dict[:id]) %></li>
     <% end %>
 </ul>

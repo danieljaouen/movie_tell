@@ -37,4 +37,5 @@ end
 
 group :production do
   gem 'unicorn-rails'
+  gem 'pg'
 end

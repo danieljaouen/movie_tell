@@ -24,6 +24,7 @@ production:
   adapter: postgresql
   encoding: unicode
   database: movie_tell
+  host: localhost
   pool: 5
   username: movie_tell
   password: <%= ENV['POSTGRESQL_PASSWORD']

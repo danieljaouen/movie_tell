@@ -3,8 +3,8 @@ worker_processes Integer(ENV['WEB_CONCURRENCY'] || 3)
 timeout 30
 preload_app true
 working_directory '/var/www/movie-tell.com'
-stderr_path '/var/log/unicorn/movie-tell.com-error.log'
-stdout_path '/var/log/unicorn/movie-tell.com-access.log'
+stderr_path 'log/unicorn-error.log'
+stdout_path 'log/unicorn-access.log'
 
 before_fork do |server, worker|
   Signal.trap 'TERM' do

@@ -10,7 +10,6 @@ class MoviesController < ApplicationController
     url = movie_url + params[:id].to_s + ".json?apikey=#{api_key}"
     movie_response = HTTParty.get(url)
     @movie_dict = JSON.parse(movie_response.body, symbolize_names: true)
-    binding.pry
     @rating = (
       Rating.find_by(rottentomatoes_id: params[:id], rater: current_user) ||
       Rating.new(rottentomatoes_id: params[:id], rater: current_user)

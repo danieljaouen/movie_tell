@@ -73,6 +73,8 @@ Rails.application.configure do
     address: 'localhost',
     port: 25,
     domain: 'movie-tell.com',
+    tls: false,
+    enable_starttls_auto: false,
   }
 
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to

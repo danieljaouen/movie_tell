@@ -9,7 +9,6 @@ gem 'jquery-rails'
 gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 gem 'pry-rails'
-gem 'awesome_print'
 gem 'rails_admin'
 gem 'foreigner'
 gem 'simple_form'
@@ -19,6 +18,7 @@ gem 'devise'
 gem 'httparty'
 
 group :development, :test do
+  gem 'awesome_print'
   gem 'better_errors'
   gem 'rails_layout'
   gem 'rspec-rails'
@@ -36,6 +36,6 @@ group :doc do
 end
 
 group :production do
-  gem 'unicorn-rails'
   gem 'pg'
+  gem 'unicorn-rails'
 end

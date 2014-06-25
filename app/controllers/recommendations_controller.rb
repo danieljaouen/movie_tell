@@ -18,7 +18,9 @@ class RecommendationsController < ApplicationController
   end
 
   def destroy
-    @recommendation.destroy
+    if @recommendation.recommender == current_user || @recommendation.recommendee == current_user
+      @recommendation.destroy
+    end
     redirect_to root_path,
       notice: 'Recommendation was successfully destroyed.'
   end

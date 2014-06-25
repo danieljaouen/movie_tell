@@ -10,14 +10,6 @@ class User < ActiveRecord::Base
   has_many :recommendations, class_name: 'Recommendation', foreign_key: 'recommendee_id'
   has_many :recommended, class_name: 'Recommendation', foreign_key: 'recommender_id'
 
-  def current_friendships
-    friendships.current
-  end
-
-  def pending_friendships
-    friendships.pending
-  end
-
   def currently_friends_with?(user)
     Friendship.where(user: self, friend: user, pending: false).length > 0
   end

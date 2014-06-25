@@ -1,14 +1,14 @@
 <h1>Friends</h1>
 <ul>
     <% current_user.current_friendships.each do |friendship| %>
-        <li><%= link_to friendship.friend.email, user_path(friendship.friend) %></li>
+        <li><%= link_to friendship.friend_email, user_path(friendship.friend) %></li>
     <% end %>
 </ul>
 
 <h1>Pending Friends</h1>
 <ul>
     <% current_user.pending_friendships.each do |friendship| %>
-        <li><%= link_to friendship.friend.email, user_path(friendship.friend) %></li>
+        <li><%= link_to friendship.friend_email, user_path(friendship.friend) %></li>
     <% end %>
 </ul>
 
@@ -16,7 +16,7 @@
 <ul>
     <% current_user.ratings.each do |rating| %>
         <li>
-            <p class="rottentomatoes"><%= rating.movie.title %></p>
+            <p class="rottentomatoes"><%= rating.movie_title %></p>
             <p class="rating"><%= rating.rating %></p>
         </li>
 
@@ -27,7 +27,7 @@
 <ul>
     <% current_user.recommendations.each do |recommendation| %>
         <li>
-            <p class="rottentomatoes"><%= recommendation.movie.title %></p>
+            <p class="rottentomatoes"><%= recommendation.movie_title %></p>
             <p class="recommender"><%= recommendation.recommender.email %></p>
             <p class="delete"><%= link_to 'Delete', recommendation, method: :delete %></p>
         </li>
@@ -38,7 +38,7 @@
 <ul>
     <% current_user.recommended.each do |recommendation| %>
         <li>
-            <p class="rottentomatoes"><%= recommendation.movie.title %></p>
+            <p class="rottentomatoes"><%= recommendation.movie_title %></p>
             <p class="recommendee"><%= recommendation.recommendee.email %></p>
             <p class="delete"><%= link_to 'Delete', recommendation, method: :delete %></p>
         </li>

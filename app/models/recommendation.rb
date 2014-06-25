@@ -6,6 +6,10 @@ class Recommendation < ActiveRecord::Base
     foreign_key: :rottentomatoes_id,
     primary_key: :rottentomatoes_id
 
+  delegate :title, :year, :mpaa_rating, :critics_score, :audience_score,
+    to: :movie,
+    prefix: true
+
   before_create :create_movie
 
   validates :rottentomatoes_id,

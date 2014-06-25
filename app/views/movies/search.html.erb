@@ -6,7 +6,5 @@
 
 <h1>Movies</h1>
 <ul>
-    <% @movie_dicts.each do |movie_dict| %>
-        <li><%= link_to movie_dict[:title], movie_path(movie_dict[:id]) %></li>
-    <% end %>
+    <%= render partial: 'movie_item', collection: @movie_dicts %>
 </ul>

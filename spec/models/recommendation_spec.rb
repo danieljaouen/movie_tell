@@ -52,11 +52,11 @@ RSpec.describe Recommendation, :type => :model do
     end
 
     describe 'user2 recommendations includes @recommendation' do
-      it 'should contain @recommendation in user1.recommendations' do
-        expect(user2.recommendations).to include(recommendation)
+      it 'should contain @recommendation in user1.recommended' do
+        expect(user2.recommended).to include(recommendation)
       end
-      it 'should contain @recommendation in user2.recommended' do
-        expect(user1.recommended).to include(recommendation)
+      it 'should contain @recommendation in user2.recommendations' do
+        expect(user1.recommendations).to include(recommendation)
       end
     end
   end

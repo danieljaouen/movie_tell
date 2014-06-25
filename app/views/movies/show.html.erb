@@ -1,9 +1,9 @@
-<h1><%= @movie_dict[:title] %></h1>
-<h2><%= @movie_dict[:year] %></h2>
+<h1><%= @movie.title %></h1>
+<h2><%= @movie.year %></h2>
 
 <p>Ratings:</p>
-<p>Critic Score: <%= @movie_dict[:ratings][:critics_score] %></p>
-<p>Audience Score: <%= @movie_dict[:ratings][:audience_score] %></p>
+<p>Critic Score: <%= @movie.critics_score %></p>
+<p>Audience Score: <%= @movie.audience_score %></p>
 
 <h2>Your Rating</h2>
 <%= render 'rating_form' %>

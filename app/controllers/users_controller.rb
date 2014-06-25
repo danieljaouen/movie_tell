@@ -23,8 +23,7 @@ class UsersController < ApplicationController
   end
 
   def unfriend
-    Friendship.where(user: @user, friend: current_user).destroy_all
-    Friendship.where(user: current_user, friend: @user).destroy_all
+    current_user.unfriend(@user)
 
     flash[:alert] = 'User successfully unfriended.'
     redirect_to user_path(@user)

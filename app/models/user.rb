@@ -45,4 +45,9 @@ class User < ActiveRecord::Base
     their_friendship = Friendship.create(user: user, friend: self, pending: false)
     their_friendship.save
   end
+
+  def unfriend(user)
+    Friendship.where(user: user, friend: self).destroy_all
+    Friendship.where(user: self, friend: user).destroy_all
+  end
 end

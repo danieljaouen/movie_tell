@@ -1,14 +1,14 @@
 <h1>Friends</h1>
 <ul>
     <% current_user.current_friendships.each do |friendship| %>
-        <li><%= link_to friendship.friend_email, user_path(friendship.friend) %></li>
+        <li><%= link_to friendship.friend_email, friendship.friend %></li>
     <% end %>
 </ul>
 
 <h1>Pending Friends</h1>
 <ul>
     <% current_user.pending_friendships.each do |friendship| %>
-        <li><%= link_to friendship.friend_email, user_path(friendship.friend) %></li>
+        <li><%= link_to friendship.friend_email, friendship.friend %></li>
     <% end %>
 </ul>
 
@@ -16,8 +16,12 @@
 <ul>
     <% current_user.ratings.each do |rating| %>
         <li>
-            <p class="rottentomatoes"><%= rating.movie_title %></p>
-            <p class="rating"><%= rating.rating %></p>
+            <p class="rottentomatoes">
+                <%= link_to rating.movie_title, movie_path(rating.movie.rottentomatoes_id) %>
+            </p>
+            <p class="rating">
+                <%= rating.rating %>
+            </p>
         </li>
 
     <% end %>
@@ -27,9 +31,15 @@
 <ul>
     <% current_user.recommendations.each do |recommendation| %>
         <li>
-            <p class="rottentomatoes"><%= recommendation.movie_title %></p>
-            <p class="recommender"><%= recommendation.recommender.email %></p>
-            <p class="delete"><%= link_to 'Delete', recommendation, method: :delete %></p>
+            <p class="rottentomatoes">
+                <%= link_to recommendation.movie_title, movie_path(recommendation.movie.rottentomatoes_id) %>
+            </p>
+            <p class="recommender">
+                by: <%= link_to recommendation.recommender.email, recommendation.recommender %>
+            </p>
+            <p class="delete">
+                <%= link_to 'Delete', recommendation, method: :delete %>
+            </p>
         </li>
     <% end %>
 </ul>
@@ -38,9 +48,15 @@
 <ul>
     <% current_user.recommended.each do |recommendation| %>
         <li>
-            <p class="rottentomatoes"><%= recommendation.movie_title %></p>
-            <p class="recommendee"><%= recommendation.recommendee.email %></p>
-            <p class="delete"><%= link_to 'Delete', recommendation, method: :delete %></p>
+            <p class="rottentomatoes">
+                <%= link_to recommendation.movie_title, movie_path(recommendation.movie.rottentomatoes_id) %>
+            </p>
+            <p class="recommendee">
+                to: <%= link_to recommendation.recommendee.email, recommendation.recommendee %>
+            </p>
+            <p class="delete">
+                <%= link_to 'Delete', recommendation, method: :delete %>
+            </p>
         </li>
     <% end %>
 </ul>

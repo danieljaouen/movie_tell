@@ -7,6 +7,6 @@
 <h1>Users</h1>
 <ul>
     <% if @user %>
-        <li><%= link_to @user.email, user_path(@user) %></li>
+        <li><%= link_to @user.email, @user %></li>
     <% end %>
 </ul>

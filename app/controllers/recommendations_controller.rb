@@ -7,6 +7,9 @@ class RecommendationsController < ApplicationController
 
     friends = extract_friends
     friends.each do |friend|
+      next if Recommendation.find_by(rottentomatoes_id: rottentomatoes_id,
+                                     recommender: current_user,
+                                     recommendee: friend)
       recommendation = Recommendation.new(rottentomatoes_id: rottentomatoes_id,
                                           recommender: current_user,
                                           recommendee: friend)

@@ -11,11 +11,11 @@ class User < ActiveRecord::Base
   has_many :recommended, class_name: 'Recommendation', foreign_key: 'recommender_id'
 
   def current_friendships
-    friendships.where(pending: false)
+    friendships.current
   end
 
   def pending_friendships
-    friendships.where(pending: true)
+    friendships.pending
   end
 
   def currently_friends_with?(user)

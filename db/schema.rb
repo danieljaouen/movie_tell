@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140623213734) do
+ActiveRecord::Schema.define(version: 20140625045734) do
 
   create_table "admins", force: true do |t|
     t.string   "email",                  default: "", null: false
@@ -32,9 +32,9 @@ ActiveRecord::Schema.define(version: 20140623213734) do
   add_index "admins", ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
 
   create_table "friendships", force: true do |t|
-    t.integer  "user_id"
-    t.integer  "friend_id"
-    t.boolean  "pending"
+    t.integer  "user_id",    null: false
+    t.integer  "friend_id",  null: false
+    t.boolean  "pending",    null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -42,7 +42,7 @@ ActiveRecord::Schema.define(version: 20140623213734) do
   add_index "friendships", ["user_id"], name: "index_friendships_on_user_id"
 
   create_table "movies", force: true do |t|
-    t.integer  "rottentomatoes_id"
+    t.integer  "rottentomatoes_id", null: false
     t.string   "title"
     t.string   "year"
     t.string   "mpaa_rating"
@@ -55,9 +55,9 @@ ActiveRecord::Schema.define(version: 20140623213734) do
   add_index "movies", ["rottentomatoes_id"], name: "index_movies_on_rottentomatoes_id", unique: true
 
   create_table "ratings", force: true do |t|
-    t.integer  "rottentomatoes_id"
-    t.integer  "rater_id"
-    t.integer  "rating"
+    t.integer  "rottentomatoes_id", null: false
+    t.integer  "rater_id",          null: false
+    t.integer  "rating",            null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -65,9 +65,9 @@ ActiveRecord::Schema.define(version: 20140623213734) do
   add_index "ratings", ["rater_id"], name: "index_ratings_on_rater_id"
 
   create_table "recommendations", force: true do |t|
-    t.integer  "rottentomatoes_id"
-    t.integer  "recommender_id"
-    t.integer  "recommendee_id"
+    t.integer  "rottentomatoes_id", null: false
+    t.integer  "recommender_id",    null: false
+    t.integer  "recommendee_id",    null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end

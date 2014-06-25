@@ -5,8 +5,8 @@
 <% end %>
 
 <h1>Users</h1>
-<ul>
+<table class="table table-bordered">
     <% if @user %>
-        <li><%= link_to @user.email, @user %></li>
+        <tr><td><%= link_to @user.email, @user %></td></tr>
     <% end %>
-</ul>
+</table>

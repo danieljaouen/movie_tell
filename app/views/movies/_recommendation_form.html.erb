@@ -1,14 +1,14 @@
-<h1>Recommend to:</h1>
+<h2>Recommend to:</h2>
 
 <%= form_tag recommendations_path do %>
-    <ul>
+    <table class="table table-bordered">
         <% @user.friends.each do |friend| %>
-            <li>
-                <%= check_box_tag "friend-#{friend.id}", friend.id %>
-                <%= label_tag "friend-#{friend.id}", friend.email %>
-            </li>
+            <tr>
+                <td><%= check_box_tag "friend-#{friend.id}", friend.id %></td>
+                <td><%= label_tag "friend-#{friend.id}", friend.email %></td>
+            </tr>
         <% end %>
-    </ul>
+    </table>
     <%= hidden_field_tag 'rottentomatoes_id', params[:id] %>
-    <%= submit_tag 'Submit' %>
+    <%= submit_tag 'Submit', class: 'btn btn-success' %>
 <% end %>

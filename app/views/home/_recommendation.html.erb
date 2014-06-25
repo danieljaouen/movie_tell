@@ -1,11 +1,11 @@
-<li>
-    <p class="rottentomatoes">
+<tr>
+    <td class="rottentomatoes">
         <%= link_to recommendation.movie_title, movie_path(recommendation.movie.rottentomatoes_id) %>
-    </p>
-    <p class="recommender">
-        by: <%= link_to recommendation.recommender.email, recommendation.recommender %>
-    </p>
-    <p class="delete">
+    </td>
+    <td class="recommender">
+        <%= link_to recommendation.recommender.email, recommendation.recommender %>
+    </td>
+    <td class="delete">
         <%= link_to 'Delete', recommendation, method: :delete %>
-    </p>
-</li>
+    </td>
+</tr>

@@ -1,4 +1,4 @@
 <h1>Pending Friends</h1>
-<ul class="list-group">
+<table class="table table-bordered">
     <%= render partial: 'pending_friendship', collection: @user.friendships.pending %>
-</ul>
+</table>

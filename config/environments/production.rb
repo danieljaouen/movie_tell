@@ -72,6 +72,7 @@ Rails.application.configure do
   config.action_mailer.smtp_settings = {
     address: 'localhost',
     port: 25,
+    domain: 'movie-tell.com',
   }
 
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to

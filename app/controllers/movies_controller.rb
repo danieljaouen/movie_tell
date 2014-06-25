@@ -4,8 +4,7 @@ class MoviesController < ApplicationController
   before_action :authenticate_user!
 
   def show
-    users = User.where(id: current_user.id).includes(:friends)
-    @user = users[0]
+    @user = User.includes(:friends).find(current_user.id)
 
     @movie = MovieFinder.new.find_movie(params[:id])
     @rating = (

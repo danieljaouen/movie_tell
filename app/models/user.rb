@@ -17,4 +17,32 @@ class User < ActiveRecord::Base
   def pending_friendships
     friendships.where(pending: true)
   end
+
+  def currently_friends_with?(user)
+    Friendship.where(user: self, friend: user, pending: false).length > 0
+  end
+
+  def friend_request_sent_to?(user)
+    Friendship.where(user: user, friend: self, pending: true).length > 0
+  end
+
+  def friend_request_received_from?(user)
+    Friendship.where(user: self, friend: user, pending: true).length > 0
+  end
+
+  def send_friend_request_to(user)
+    Friendship.create(user: user, friend: self, pending: true)
+  end
+
+  def accept_friend_request_from(user)
+    friendships = Friendship.where(user: self, friend: user, pending: true)
+    return if friendships.length == 0
+
+    my_friendship = friendships[0]
+    my_friendship.pending = false
+    my_friendship.save
+
+    their_friendship = Friendship.create(user: user, friend: self, pending: false)
+    their_friendship.save
+  end
 end

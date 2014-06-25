@@ -3,43 +3,20 @@ class UsersController < ApplicationController
   before_action :authenticate_user!
 
   def show
-    friendships = Friendship.where(user: current_user, friend: @user)
-    if friendships.length == 1
-      @currently_friends = true
-      @pending = friendships[0].pending
-    else
-      @currently_friends = false
-      @pending = false
-    end
   end
 
   def friend
     if current_user == @user
-      flash[:notice] = 'You cannot friend yourself.'
+      flash[:alert] = 'You cannot friend yourself.'
       redirect_to user_path and return
     end
 
-    users_friends = Friendship.where(user: @user, friend: current_user)
-    current_users_friends = Friendship.where(user: current_user, friend: @user)
-
-    if users_friends.length == 0 && current_users_friends.length == 0
-      # create a pending friendship
-      Friendship.create(user: @user, friend: current_user, pending: true)
-      flash[:notice] = 'Friend request sent.'
-    elsif users_friends.length == 1 && current_users_friends.length == 0
-      # already friended, do nothing
-      flash[:notice] = 'Friend request sent.'
-    elsif users_friends.length == 0 && current_users_friends.length == 1
-      # pending friendship exists
-      pending_friendship = current_users_friends[0]
-      pending_friendship.pending = false
-      pending_friendship.save
-
-      new_friendship = Friendship.new(user: @user, friend: current_user, pending: false)
-      new_friendship.save
+    if current_user.friend_request_received_from?(@user)
+      current_user.accept_friend_request_from(@user)
       flash[:notice] = 'User successfully friended.'
-    else
-      # already friends, do nothing
+    elsif !current_user.currently_friends_with?(@user) && !current_user.friend_request_sent_to?(@user)
+      current_user.send_friend_request_to(@user)
+      flash[:notice] = 'Friend request sent.'
     end
 
     redirect_to user_path(@user)

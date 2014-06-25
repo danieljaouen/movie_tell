@@ -1,6 +1,6 @@
 class RecommendationsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_recommendation, only: [:update, :destroy]
+  before_action :set_recommendation, only: [:destroy]
 
   def create
     rottentomatoes_id = params[:rottentomatoes_id]
@@ -27,30 +27,10 @@ class RecommendationsController < ApplicationController
     end
   end
 
-  def update
-    respond_to do |format|
-      if @recommendation.update(recommendation_params)
-        format.html do
-          redirect_to movie_path(id: @recommendation.rottentomatoes_id),
-            notice: 'Recommendation was successfully updated.'
-        end
-      else
-        format.html do
-          redirect_to movie_path(id: @recommendation.rottentomatoes_id),
-            alert: 'Please select a friend.'
-        end
-      end
-    end
-  end
-
   def destroy
     @recommendation.destroy
-    respond_to do |format|
-      format.html do
-        redirect_to root_path,
-          notice: 'Recommendation was successfully destroyed.'
-      end
-    end
+    redirect_to root_path,
+      notice: 'Recommendation was successfully destroyed.'
   end
 
   private

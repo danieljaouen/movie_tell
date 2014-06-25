@@ -6,45 +6,29 @@ class RatingsController < ApplicationController
     @rating = Rating.new(rating_params)
     @rating.rater = current_user
 
-    respond_to do |format|
-      if @rating.save
-        format.html do
-          redirect_to movie_path(id: @rating.rottentomatoes_id),
-            notice: 'Rating was successfully created.'
-        end
-      else
-        format.html do
-          redirect_to movie_path(id: @rating.rottentomatoes_id),
-            alert: 'Please select a rating.'
-        end
-      end
+    if @rating.save
+      redirect_to movie_path(id: @rating.rottentomatoes_id),
+        notice: 'Rating was successfully created.'
+    else
+      redirect_to movie_path(id: @rating.rottentomatoes_id),
+        alert: 'Please select a rating.'
     end
   end
 
   def update
-    respond_to do |format|
-      if @rating.update(rating_params)
-        format.html do
-          redirect_to movie_path(id: @rating.rottentomatoes_id),
-            notice: 'Rating was successfully updated.'
-        end
-      else
-        format.html do
-          redirect_to movie_path(id: @rating.rottentomatoes_id),
-            alert: 'Please select a rating.'
-        end
-      end
+    if @rating.update(rating_params)
+      redirect_to movie_path(id: @rating.rottentomatoes_id),
+        notice: 'Rating was successfully updated.'
+    else
+      redirect_to movie_path(id: @rating.rottentomatoes_id),
+        alert: 'Please select a rating.'
     end
   end
 
   def destroy
     @rating.destroy
-    respond_to do |format|
-      format.html do
-        redirect_to movie_path,
-          notice: 'Rating was successfully destroyed.'
-      end
-    end
+    redirect_to root_path,
+      notice: 'Rating was successfully destroyed.'
   end
 
   private

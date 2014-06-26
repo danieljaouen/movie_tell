@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140625045734) do
+ActiveRecord::Schema.define(version: 20140626001956) do
 
   create_table "admins", force: true do |t|
     t.string   "email",                  default: "", null: false
@@ -74,6 +74,17 @@ ActiveRecord::Schema.define(version: 20140625045734) do
 
   add_index "recommendations", ["recommendee_id"], name: "index_recommendations_on_recommendee_id"
   add_index "recommendations", ["recommender_id"], name: "index_recommendations_on_recommender_id"
+
+  create_table "user_profiles", force: true do |t|
+    t.string   "name"
+    t.boolean  "private",      null: false
+    t.boolean  "show_ratings", null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "user_id"
+  end
+
+  add_index "user_profiles", ["user_id"], name: "index_user_profiles_on_user_id", unique: true
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false

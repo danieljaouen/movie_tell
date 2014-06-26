@@ -1,0 +1,32 @@
+<%= form_for @user_profile do |f| %>
+    <% if @user_profile.errors.any? %>
+        <div id="error_explanation">
+            <h2><%= pluralize(@user_profile.errors.count, "error") %> prohibited this user_profile from being saved:</h2>
+
+            <ul>
+                <% @user_profile.errors.full_messages.each do |message| %>
+                    <li><%= message %></li>
+                <% end %>
+            </ul>
+        </div>
+    <% end %>
+
+    <table class="table table-bordered">
+        <tr>
+            <td><%= f.label :name, 'Your name' %></td>
+            <td><%= f.text_field :name %></td>
+        </tr>
+        <tr>
+            <td><%= f.label :private, 'Make profile private' %></td>
+            <td><%= f.check_box :private %></td>
+        </tr>
+        <tr>
+            <td><%= f.label :show_ratings, 'Show ratings in your profile' %></td>
+            <td><%= f.check_box :show_ratings %></td>
+        </tr>
+    </table>
+
+    <div class="form-actions">
+        <%= f.button 'Update', class: 'btn btn-success' %>
+    </div>
+<% end %>

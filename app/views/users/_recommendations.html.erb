@@ -1,0 +1,9 @@
+<h1>Recommended For You</h1>
+<table class="table table-bordered">
+    <tr>
+        <th>Movie</th>
+        <th>Recommended By</th>
+        <th></th>
+    </tr>
+    <%= render partial: 'recommendation', collection: @user.recommendations %>
+</table>

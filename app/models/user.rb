@@ -3,6 +3,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   has_one  :user_profile
+
   has_many :friendships
   has_many :friends, through: :friendships
 
@@ -10,6 +11,10 @@ class User < ActiveRecord::Base
 
   has_many :recommendations, class_name: 'Recommendation', foreign_key: 'recommendee_id'
   has_many :recommended, class_name: 'Recommendation', foreign_key: 'recommender_id'
+
+  delegate :name, :private, :show_ratings,
+    to: :user_profile,
+    prefix: true
 
   def currently_friends_with?(user)
     Friendship.where(user: self, friend: user, pending: false).length > 0

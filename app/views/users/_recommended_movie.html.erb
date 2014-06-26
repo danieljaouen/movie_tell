@@ -1,0 +1,11 @@
+<tr>
+    <td class="rottentomatoes">
+        <%= link_to recommended_movie.movie_title, movie_path(recommended_movie.movie.rottentomatoes_id) %>
+    </td>
+    <td class="recommendee">
+        <%= link_to recommended_movie.recommendee.email, recommended_movie.recommendee %>
+    </td>
+    <td class="delete">
+        <%= link_to 'Delete', recommended_movie, method: :delete %>
+    </td>
+</tr>

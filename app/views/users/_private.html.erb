@@ -1,7 +1,7 @@
 <h1>Private</h1>
 
 <% if current_user.currently_friends_with?(@user) %>
-    <%= link_to 'Unfriend', unfriend_path(@user), method: :delete %>
+    <%= link_to 'Unfriend', unfriend_path(@user), method: :delete, class: 'btn btn-danger' %>
 <% else %>
-    <%= link_to 'Friend', friend_path(@user), method: :post %>
+    <%= link_to 'Friend', friend_path(@user), method: :post, class: 'btn btn-success' %>
 <% end %>

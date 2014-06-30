@@ -3,6 +3,7 @@ FactoryGirl.define do
     email 'profiler@example.com'
     password 's3kr3ttt'
     password_confirmation 's3kr3ttt'
+    confirmed_at Time.now
   end
 
   factory :user_profile do

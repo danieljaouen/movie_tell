@@ -16,6 +16,8 @@ class User < ActiveRecord::Base
     to: :user_profile,
     prefix: true
 
+  before_create :send_email
+
   def currently_friends_with?(user)
     Friendship.where(user: self, friend: user, pending: false).length > 0
   end
@@ -47,5 +49,11 @@ class User < ActiveRecord::Base
   def unfriend(user)
     Friendship.where(user: user, friend: self).destroy_all
     Friendship.where(user: self, friend: user).destroy_all
+  end
+
+  private
+
+  def send_email
+    NotificationMailer.new_user(self).deliver
   end
 end

@@ -11,6 +11,7 @@ class Recommendation < ActiveRecord::Base
     prefix: true
 
   before_create :create_movie
+  before_create :send_email
 
   validates :rottentomatoes_id,
     presence: true
@@ -26,5 +27,9 @@ class Recommendation < ActiveRecord::Base
       movie = MovieFinder.new.find_movie(self.rottentomatoes_id)
       movie.save
     end
+  end
+
+  def send_email
+    NotificationMailer.new_recommendation(self.recommendee).deliver
   end
 end

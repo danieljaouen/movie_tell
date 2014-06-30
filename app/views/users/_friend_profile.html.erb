@@ -1,0 +1,36 @@
+<table class="table table-bordered">
+    <tr>
+        <th>Name</th>
+        <th>Email</th>
+    </tr>
+
+    <tr>
+        <td><%= @user.user_profile && @user.user_profile_name %></td>
+        <td><%= @user.email %></td>
+    </tr>
+</table>
+
+<% if current_user.currently_friends_with?(@user) %>
+    <%= link_to 'Unfriend', unfriend_path(@user), method: :delete, class: 'btn btn-danger' %>
+<% else %>
+    <%= link_to 'Friend', friend_path(@user), method: :post, class: 'btn btn-success' %>
+<% end %>
+
+<% if @user.user_profile && @user.user_profile_show_ratings %>
+    <%= render partial: 'ratings' %>
+<% end %>
+
+<h1>Friends</h1>
+<% @user.friendships.current.each do |friendship| %>
+    <table class="table table-bordered">
+        <tr>
+            <th>Name</th>
+            <th>Email</th>
+        </tr>
+
+        <tr>
+            <td><%= link_to friendship.friend.user_profile && friendship.friend.user_profile_name || '', friendship.friend %></td>
+            <td><%= link_to friendship.friend_email, friendship.friend %></td>
+        </tr>
+    </table>
+<% end %>

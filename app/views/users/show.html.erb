@@ -1,5 +1,7 @@
 <% if current_user == @user %>
     <%= render partial: 'self_profile' %>
+<% elsif current_user.friends.include?(@user) %>
+    <%= render partial: 'friend_profile' %>
 <% elsif @user.user_profile && @user.user_profile_private %>
     <%= render partial: 'private' %>
 <% else %>

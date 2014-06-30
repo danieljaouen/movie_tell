@@ -3,23 +3,27 @@ FactoryGirl.define do
     email 'user1@example.com'
     password 's3kr3ttt'
     password_confirmation 's3kr3ttt'
+    confirmed_at Time.now
   end
 
   factory :user2, class: User do
     email 'user2@example.com'
     password 's3kr3ttt'
     password_confirmation 's3kr3ttt'
+    confirmed_at Time.now
   end
 
   factory :user3, class: User do
     email 'user3@example.com'
     password 's3kr3ttt'
     password_confirmation 's3kr3ttt'
+    confirmed_at Time.now
   end
 
   factory :user4, class: User do
     email 'user4@example.com'
     password 's3kr3ttt'
     password_confirmation 's3kr3ttt'
+    confirmed_at Time.now
   end
 end

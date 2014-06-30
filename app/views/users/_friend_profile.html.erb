@@ -13,6 +13,7 @@
 <% if current_user.currently_friends_with?(@user) %>
     <%= link_to 'Unfriend', unfriend_path(@user), method: :delete, class: 'btn btn-danger' %>
 <% else %>
+    <p>This user is currently pending your approval.</p>
     <%= link_to 'Friend', friend_path(@user), method: :post, class: 'btn btn-success' %>
 <% end %>
 

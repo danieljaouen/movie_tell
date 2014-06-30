@@ -17,6 +17,8 @@ class UsersController < ApplicationController
     elsif !current_user.currently_friends_with?(@user) && !current_user.friend_request_sent_to?(@user)
       current_user.send_friend_request_to(@user)
       flash[:notice] = 'Friend request sent.'
+    else
+      flash[:notice] = 'Friend request sent.'
     end
 
     redirect_to user_path(@user)

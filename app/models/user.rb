@@ -10,11 +10,10 @@ class User < ActiveRecord::Base
   has_many :ratings, foreign_key: :rater_id
 
   has_many :recommendations, class_name: 'Recommendation', foreign_key: 'recommendee_id'
-  has_many :recommended, class_name: 'Recommendation', foreign_key: 'recommender_id'
+  has_many :recommended,     class_name: 'Recommendation', foreign_key: 'recommender_id'
 
   delegate :name, :private, :show_ratings,
-    to: :user_profile,
-    prefix: true
+    to: :user_profile
 
   before_create :send_email
 

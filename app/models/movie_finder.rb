@@ -2,7 +2,7 @@ require 'httparty'
 
 class MovieFinder
   def initialize
-    @api_key    = Rails.application.secrets.rottentomatoes_api_key
+    @api_key = Rails.application.secrets.rottentomatoes_api_key
   end
 
   def find_movie(id)

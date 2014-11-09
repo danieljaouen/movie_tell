@@ -5,7 +5,7 @@
     </tr>
 
     <tr>
-        <td><%= @user.user_profile && @user.user_profile_name %></td>
+        <td><%= @user.user_profile && @user.name %></td>
         <td><%= @user.email %></td>
     </tr>
 </table>
@@ -30,7 +30,7 @@
         </tr>
 
         <tr>
-            <td><%= link_to friendship.friend.user_profile && friendship.friend.user_profile_name || '', friendship.friend %></td>
+            <td><%= link_to friendship.friend.user_profile && friendship.friend.name || '', friendship.friend %></td>
             <td><%= link_to friendship.friend_email, friendship.friend %></td>
         </tr>
     </table>

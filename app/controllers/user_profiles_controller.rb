@@ -34,13 +34,14 @@ class UserProfilesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_user_profile
-      @user_profile = current_user.user_profile
-    end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def user_profile_params
-      params.require(:user_profile).permit(:name, :private, :show_ratings)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_user_profile
+    @user_profile = current_user.user_profile
+  end
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def user_profile_params
+    params.require(:user_profile).permit(:name, :private, :show_ratings)
+  end
 end

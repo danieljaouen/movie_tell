@@ -17,7 +17,7 @@
     <%= link_to 'Friend', friend_path(@user), method: :post, class: 'btn btn-success' %>
 <% end %>
 
-<% if @user.user_profile && @user.user_profile_show_ratings %>
+<% if @user.user_profile && @user.show_ratings %>
     <%= render partial: 'ratings' %>
 <% end %>
 

@@ -8,7 +8,7 @@ class UsersController < ApplicationController
   def friend
     if current_user == @user
       flash[:alert] = 'You cannot friend yourself.'
-      redirect_to user_path and return
+      return redirect_to user_path
     end
 
     if current_user.friend_request_received_from?(@user)
